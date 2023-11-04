@@ -6,7 +6,7 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:31:09 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/04 14:54:32 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/04 15:08:48 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,24 @@ void	rb(t_list *lst)
 	first->next = NULL;
 	lst->next;
 	printf("rb\n");
+}
+
+void	rr(t_list *lst1, t_list *lst2)
+{
+	t_list	*first1;
+	t_list	*last1;
+	t_list	*first2;
+	t_list	*last2;
+
+	first1 = *lst1;
+	first2 = *lst2;
+	last1 = ft_lstlast(lst1);
+	last2 = ft_lstlast(lst2);
+	last1->next = first1;
+	last2->next = first2;
+	first1->next = NULL;
+	first2->next = NULL;
+	lst1->next;
+	lst2->next;
+	printf("rr\n");
 }

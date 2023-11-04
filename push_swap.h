@@ -6,7 +6,7 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:31:22 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/04 14:52:19 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/04 15:09:12 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-
+t_list	*ft_lstlast(t_list *lst);
 void	ra(t_list *lst);
 void	rb(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
+void	rr(t_list *lst1, t_list *lst2);
 
 #endif /*push_swap*/
