@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_function1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:31:09 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/04 15:08:48 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/07 16:59:34 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,25 @@ void	rr(t_list *lst1, t_list *lst2)
 	lst2->next;
 	printf("rr\n");
 }
+
+void	pb(t_list *lst1, t_list *lst2)
+{
+	t_list	first1;
+
+	first1 = *lst1;
+	lst1->next;
+	first1->next = lst2;
+	*lst2 = first1;
+}
+
+void	pa(t_list *lst1, t_list *lst2)
+{
+	t_list	first2;
+
+	first2 = *lst2;
+	lst2->next;
+	first2->next = lst1;
+	*lst1 = first2;
+}
+
+
