@@ -6,32 +6,34 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:26:28 by sam               #+#    #+#             */
-/*   Updated: 2023/11/07 17:46:27 by sam              ###   ########.fr       */
+/*   Updated: 2023/11/08 15:43:05 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    create_lst(int *tab)
+t_list  *create_lst1(int *tab, int ac)
 {
     int     i;
     t_list  *lst1;
-
+    printf("list 1 cree\n");
+    lst1 = ft_lstnew(lst1);
+  
     i = 0;
-    while (tab[i])
+    while (i < (ac -1))
     {
-        lst1->data = tab[i];
-        printf("data = %d\n", lst1->data);
-        lst1->next;
+        lst1 = lst_addback(lst1, tab[i]);
         i++;
     }
-    lst1 = NULL;
+    return (lst1);
 }
 
 int main(int ac, char **av)
 {
-    int *tab;
-    int i;
+    int     *tab;
+    int     i;
+    t_list  *lst1;
+    t_list  *lst2;
 
     i = 0;
     if (ac < 2)
@@ -42,12 +44,18 @@ int main(int ac, char **av)
         tab[i] = atoi(av[i + 1]);
         i++;
     }
-    /*int y = 0;
-    while (i > y)
-    {
-        printf("%d\n", tab[y]);
-        y++;
-    }*/
-    create_lst(tab);
+    lst1 = create_lst1(tab, ac);
+    print_lst(lst1);
+    lst2 = ft_lstnew(lst2);
+    if (lst2 == NULL)
+        printf("pile b vide\n");
+    lst2 = pb(lst1, lst2);
+    lst1 = lst1->next;
+    print_lst(lst1);
+    printf("pile b :\n");
+    print_lst(lst2);
+    lst1 = rra(lst1);
+    print_lst(lst1);
+    //tri_lst(lst1, lst2);
     return (0);
 }

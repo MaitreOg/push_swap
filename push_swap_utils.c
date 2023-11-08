@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:37:21 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/07 17:34:46 by sam              ###   ########.fr       */
+/*   Updated: 2023/11/08 14:58:12 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,60 @@ int	ft_atoi(char *nptr)
 		i++;
 	}
 	return (result * signe);
+}
+
+t_list	*ft_lstnew(t_list *new)
+{
+	/*new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->data = NULL;*/
+	return (NULL);
+}
+
+t_list	*lst_addback(t_list *lst, int data)
+{
+	t_list	*node;
+	t_list	*tmp;
+	
+	node = malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->data = data;
+	node->next = NULL;
+	if (!lst)
+		return (node);
+	tmp = lst;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = node;
+	return (lst);
+}
+
+t_list	*lst_addfront(t_list *lst, int data)
+{
+	t_list	*node;
+	
+	node = malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->data = data;
+	node->next = lst;
+	return (node);
+}
+void	print_lst(t_list *lst)
+{
+	t_list	*print;
+
+	print = lst;
+	if (lst == NULL)
+	{
+		printf("chaine vide\n");
+		return;
+	}
+	while (print)
+	{
+		printf("%d\n", print->data);
+		print = print->next;
+	}
 }
