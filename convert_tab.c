@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:26:28 by sam               #+#    #+#             */
-/*   Updated: 2023/11/08 15:43:05 by sam              ###   ########.fr       */
+/*   Updated: 2023/11/08 16:41:13 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,20 @@ int main(int ac, char **av)
         i++;
     }
     lst1 = create_lst1(tab, ac);
-    print_lst(lst1);
+    //print_lst(lst1);
     lst2 = ft_lstnew(lst2);
-    if (lst2 == NULL)
-        printf("pile b vide\n");
-    lst2 = pb(lst1, lst2);
-    lst1 = lst1->next;
-    print_lst(lst1);
-    printf("pile b :\n");
-    print_lst(lst2);
-    lst1 = rra(lst1);
-    print_lst(lst1);
+    int true = 0;
+    t_list  *var;
+
+    var = lst1;
+    while (true == 0 && var)
+    {
+        true = mediane(lst1, var->data);
+        
+        if (true == 1)
+            printf("la mediane est : %d\n", var->data);
+        var = var->next;
+    }
     //tri_lst(lst1, lst2);
     return (0);
 }
