@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:26:28 by sam               #+#    #+#             */
-/*   Updated: 2023/11/08 16:41:13 by sam              ###   ########.fr       */
+/*   Updated: 2023/11/10 01:55:05 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,14 @@ int main(int ac, char **av)
     lst1 = create_lst1(tab, ac);
     //print_lst(lst1);
     lst2 = ft_lstnew(lst2);
-    int true = 0;
+    pb(&lst1, &lst2);
+    pb(&lst1, &lst2);
+    //rr(&lst1, &lst2);
+    printf("\nlst1 =\n");
+    print_lst(lst1);
+    printf("\nlst2 =\n");
+    print_lst(lst2);
+    /*int true = 0;
     t_list  *var;
 
     var = lst1;
@@ -58,7 +65,7 @@ int main(int ac, char **av)
         if (true == 1)
             printf("la mediane est : %d\n", var->data);
         var = var->next;
-    }
+    }*/
     //tri_lst(lst1, lst2);
     return (0);
 }

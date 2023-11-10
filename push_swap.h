@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:31:22 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/08 16:30:03 by sam              ###   ########.fr       */
+/*   Updated: 2023/11/10 01:42:49 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,16 @@ t_list	*lst_addback(t_list *lst, int data);
 t_list	*lst_addfront(t_list *lst, int data);
 t_list	*rotate(t_list *lst);
 t_list	*rrotate(t_list *lst);
-t_list	*ra(t_list *lst);
-t_list	*rb(t_list *lst);
-t_list	*rra(t_list *lst);
-t_list	*rrb(t_list *lst);
-t_list	*pb(t_list *lst1, t_list *lst2);
-t_list	*pa(t_list *lst1, t_list *lst2);
+void	ra(t_list **lst);
+void	rb(t_list **lst);
+void	rra(t_list **lst);
+void	rrb(t_list **lst);
+void	rr(t_list **lst1, t_list **lst2);
+void	rrr(t_list **lst1, t_list **lst2);
+void	pb(t_list **lst1, t_list **lst2);
+void	pa(t_list **lst1, t_list **lst2);
 int 	mediane(t_list *lst, int data);
+int		lst_len(t_list *lst);
 void	print_lst(t_list *lst);
 
 #endif /*push_swap*/

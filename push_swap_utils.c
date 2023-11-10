@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:37:21 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/08 14:58:12 by sam              ###   ########.fr       */
+/*   Updated: 2023/11/09 11:20:32 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ int	ft_atoi(char *nptr)
 
 t_list	*ft_lstnew(t_list *new)
 {
-	/*new = (t_list *)malloc(sizeof(t_list));
-	if (!new)
-		return (NULL);
-	new->data = NULL;*/
 	return (NULL);
 }
 
@@ -100,4 +96,17 @@ void	print_lst(t_list *lst)
 		printf("%d\n", print->data);
 		print = print->next;
 	}
+}
+
+int lst_len(t_list *lst)
+{
+	int	i;
+
+	i = 0;
+	while(lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
