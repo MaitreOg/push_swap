@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:37:21 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/09 11:20:32 by sam              ###   ########.fr       */
+/*   Updated: 2023/11/14 01:02:19 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,27 @@ t_list	*ft_lstnew(t_list *new)
 	return (NULL);
 }
 
-t_list	*lst_addback(t_list *lst, int data)
+t_list	*lst_addback(t_list *lst, int data, int rank)
+{
+	t_list	*node;
+	t_list	*tmp;
+	
+	node = malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->rank = rank;
+	node->data = data;
+	node->next = NULL;
+	if (!lst)
+		return (node);
+	tmp = lst;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = node;
+	return (lst);
+}
+
+t_list	*lst_add(t_list *lst, int data)
 {
 	t_list	*node;
 	t_list	*tmp;
@@ -70,13 +90,15 @@ t_list	*lst_addback(t_list *lst, int data)
 	return (lst);
 }
 
-t_list	*lst_addfront(t_list *lst, int data)
+
+t_list	*lst_addfront(t_list *lst, int data, int rank)
 {
 	t_list	*node;
 	
 	node = malloc(sizeof(t_list));
 	if (!node)
 		return (NULL);
+	node->rank = rank;
 	node->data = data;
 	node->next = lst;
 	return (node);
@@ -97,6 +119,23 @@ void	print_lst(t_list *lst)
 		print = print->next;
 	}
 }
+void	print_rank(t_list *lst)
+{
+	t_list	*print;
+
+	print = lst;
+	if (lst == NULL)
+	{
+		printf("chaine vide\n");
+		return;
+	}
+	while (print)
+	{
+		printf("%d\n", print->rank);
+		print = print->next;
+	}
+}
+
 
 int lst_len(t_list *lst)
 {
