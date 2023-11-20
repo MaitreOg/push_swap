@@ -6,7 +6,7 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:52:26 by sam               #+#    #+#             */
-/*   Updated: 2023/11/20 17:34:43 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/20 18:40:43 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,6 @@ void    sort_lst(t_list *lst1, t_list *lst2)
         algo_sort1(&lst1, &lst2);
     tri_tree(&lst1);
     sort_b(&lst1, &lst2);
-    
-    //printf("\n\n");
-    //print_lst(lst2);
-    
-   /*printf("\nressult =\n");
-    printf("lst 1 =");    
-    print_lst(lst1);
-    printf("lst2 = ");
-    print_lst(lst2);*/
     return;
 
 }
@@ -112,11 +103,9 @@ int find_min(t_list **lst)
         if (min != min2)
         {    
             rank = tmp->rank;
-            //printf("la data= %d\n", tmp->data);
         }
         tmp = tmp->next;
     }
-    //printf("le rank = %d\n", rank);
     return (rank);
 }
 void    add_cost_b(t_list **lst)
@@ -210,11 +199,8 @@ void move_node(t_list **lst1, t_list **lst2, int rank)
     
     while (tmp && tmp->rank != rank )
         tmp = tmp->next;
-    //printf("value = %d\n\n", tmp->data);
     cost1 = tmp->cost1;
     cost2 = tmp->cost2;
-    //printf("cost 1 = %d\n\n", cost1);
-    //printf("cost 2 = %d\n\n", cost2);
     if (cost1 >= 0 && cost2 >= 0)
     {
         while (cost1 > 0 && cost2 > 0)
@@ -279,37 +265,7 @@ void move_node(t_list **lst1, t_list **lst2, int rank)
     pa(lst1, lst2);
     return;   
 }
-
-void    replace_lst(t_list **lst1)
-{
-    t_list  *tmp;
-
-    tmp = *lst1;
-    while (ft_lstlast(*lst1)->rank != rank_max(lst1))
-    {
-        rra(lst1);
-        tmp = tmp->next;
-    }
-    return;
-}
-void    sort_b(t_list **lst1, t_list **lst2)
-{
-    int rank;
-    
-    while (*lst2)
-    {  
-        add_cost_b(lst2);
-        aff_cost_a(lst1, lst2);
-        rank = find_min(lst2);
-        //print_lst(lst1, lst2);
-        move_node(lst1, lst2, rank);
-        
-    }
-    replace_lst(lst1);
-    //print_lst(lst1, lst2);
-    return;
-}
-/*int    test_count(t_list **lst)
+int    test_count(t_list **lst)
 {
     int i;
     int rank;
@@ -327,7 +283,44 @@ void    sort_b(t_list **lst1, t_list **lst2)
         return (1);
     return (0);
 }
+void    replace_lst(t_list **lst1)
+{
+    t_list  *tmp;
+    int     i;
+
+    i = test_count(lst1);
+    tmp = *lst1;
+    if (i = 0)
+    {
+        while (ft_lstlast(tmp)->rank != rank_max(lst1))
+            rra(lst1);
+    }
+    else
+    {
+        while (ft_lstlast(tmp)->rank != rank_max(lst1))
+            ra(lst1);
+    }
+    return;
+}
 void    sort_b(t_list **lst1, t_list **lst2)
+{
+    int rank;
+    
+    while (*lst2)
+    {  
+        add_cost_b(lst2);
+        aff_cost_a(lst1, lst2);
+        rank = find_min(lst2);
+
+        move_node(lst1, lst2, rank);
+        
+    }
+    replace_lst(lst1);
+    //print_lst(lst1, lst2);
+    return;
+}
+
+/*void    sort_b(t_list **lst1, t_list **lst2)
 {
     int test;
 
@@ -406,8 +399,6 @@ void little_sort(t_list **lst1, t_list **lst2)
             rank_max = tmp->rank;
         tmp = tmp->next;
     }
-    //printf("rank max = %d, rank =%d", rank_max, (rank_max - 2));
-    //(*lst1);
     while (lst_len(*lst1) > 3)
     {
         if ((*lst1)->rank < (rank_max - 2))
@@ -428,7 +419,7 @@ int rank_necessary(t_list *lst1)
 
     len = lst_len(lst1);
     tmp2 = lst1;
-    new_len = ((len / 6)) + len % 6;
+    new_len = ((len / 2)) + len % 2;
     
     while (inferieur != new_len)
     {
@@ -440,9 +431,6 @@ int rank_necessary(t_list *lst1)
                 inferieur++;
             tmp = tmp->next;
         }
-       // printf("%d\n\n lst1 = ", inferieur);
-        //print_lst(lst1);
-        //printf("\nfin\n\n");
         if (inferieur == new_len)
             return (tmp2->rank);
         tmp2 = tmp2->next;  
@@ -459,23 +447,22 @@ void algo_sort1(t_list **lst1, t_list **lst2)
     rank_n = rank_necessary(*lst1);
     len1 = lst_len(*lst1);
     new_len = len1; 
-    if ((len1 / 6) < 3)
+    if ((len1 / 2) < 3)
     {
         little_sort(lst1, lst2);
         return;
     }
-    while (new_len > (len1 / 6) * 5 && (len1 / 6) * 5 >= 3)
+    while (new_len > (len1 / 2) * 1 && (len1 / 2) * 1 >= 3)
     {
         if ((*lst1)->rank < rank_n)
         {
             pb(lst1, lst2);
-            if ((*lst2)->rank < rank_n - (len1 / 12))
+            if ((*lst2)->rank < rank_n - (len1 / 4))
                 rb(lst2);
             new_len--;
         }
         else
             ra(lst1);
-        //print_rank(*lst1);
         if (new_len == 3)
             return;
     }
