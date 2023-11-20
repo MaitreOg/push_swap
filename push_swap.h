@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:31:22 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/15 15:19:41 by sam              ###   ########.fr       */
+/*   Updated: 2023/11/20 16:15:49 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <limits.h>
 
 typedef struct s_list
 {
 	int				data;
 	int				rank;
+	int				cost1;
+	int				cost2;
 	struct s_list	*next;
 }					t_list;
 
@@ -43,7 +46,7 @@ void	sa(t_list **lst);
 void	sb(t_list **lst);
 void	ss(t_list **lst1, t_list **lst2);
 int		lst_len(t_list *lst);
-void	print_lst(t_list *lst);
+void	print_lst(t_list **lst1, t_list **lst2);
 void	print_rank(t_list *lst);
 int  	find_rank(t_list *lst, int data);
 void    add_rank(t_list *lst);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:37:21 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/14 01:02:19 by sam              ###   ########.fr       */
+/*   Updated: 2023/11/20 16:15:26 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,20 +103,31 @@ t_list	*lst_addfront(t_list *lst, int data, int rank)
 	node->next = lst;
 	return (node);
 }
-void	print_lst(t_list *lst)
+void	print_lst(t_list **lst1, t_list **lst2)
 {
-	t_list	*print;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
-	print = lst;
-	if (lst == NULL)
+	tmp1 = *lst1;
+	tmp2 = *lst2;
+	while (tmp1 || tmp2)
 	{
-		printf("chaine vide\n");
-		return;
-	}
-	while (print)
-	{
-		printf("%d\n", print->data);
-		print = print->next;
+		if (tmp1)
+		{
+			//printf("%d", tmp1->data);
+			printf("%d (%d)(%d)", tmp1->data, tmp1->cost1, tmp1->cost2);
+			tmp1 = tmp1->next;
+		}
+		else 
+			printf("\t");
+		printf("\t");
+		if (tmp2)
+		{
+			//printf("%d", tmp2->data);
+			printf("%d (%d)(%d)", tmp2->data, tmp2->cost1, tmp2->cost2);
+			tmp2 = tmp2->next;
+		}
+		printf("\n\n");
 	}
 }
 void	print_rank(t_list *lst)
