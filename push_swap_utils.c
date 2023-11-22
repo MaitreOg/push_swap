@@ -6,12 +6,24 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:37:21 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/22 14:12:57 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/22 20:28:12 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	ft_lstclear(t_list **lst)
+{
+	t_list	*temp;
+
+	while (*lst)
+	{
+		temp = (*lst)->next;
+		free (*lst);
+		*lst = temp;
+	}
+	*lst = NULL;
+}
 t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
@@ -90,7 +102,6 @@ t_list	*lst_add(t_list *lst, int data)
 	return (lst);
 }
 
-
 t_list	*lst_addfront(t_list *lst, int data, int rank)
 {
 	t_list	*node;
@@ -114,7 +125,6 @@ void	print_lst(t_list **lst1, t_list **lst2)
 	{
 		if (tmp1)
 		{
-			//printf("%d", tmp1->data);
 			printf("%d (%d)(%d)", tmp1->data, tmp1->cost1, tmp1->cost2);
 			tmp1 = tmp1->next;
 		}
@@ -123,7 +133,6 @@ void	print_lst(t_list **lst1, t_list **lst2)
 		printf("\t");
 		if (tmp2)
 		{
-			//printf("%d", tmp2->data);
 			printf("%d (%d)(%d)", tmp2->data, tmp2->cost1, tmp2->cost2);
 			tmp2 = tmp2->next;
 		}

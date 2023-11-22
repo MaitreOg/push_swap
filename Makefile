@@ -4,7 +4,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS = convert_tab.c lst_sort.c push_swap_function1.c push_swap_utils.c
+SRCS = convert_tab.c lst_sort.c push_swap_function1.c push_swap_utils.c error.c
 
 OBJECTS = $(SRCS:.c=.o) 
 
