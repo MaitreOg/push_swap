@@ -6,7 +6,7 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:37:21 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/20 16:15:26 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/22 14:12:57 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_atoi(char *nptr)
 	return (result * signe);
 }
 
-t_list	*ft_lstnew(t_list *new)
+t_list	*ft_lstnew()
 {
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:52:26 by sam               #+#    #+#             */
-/*   Updated: 2023/11/20 18:40:43 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/22 14:13:45 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ int find_min(t_list **lst)
 void    add_cost_b(t_list **lst)
 {
     int i;
-    int rank;
     t_list  *tmp;
 
     i = 0;
@@ -290,7 +289,7 @@ void    replace_lst(t_list **lst1)
 
     i = test_count(lst1);
     tmp = *lst1;
-    if (i = 0)
+    if (i == 0)
     {
         while (ft_lstlast(tmp)->rank != rank_max(lst1))
             rra(lst1);
@@ -417,6 +416,7 @@ int rank_necessary(t_list *lst1)
     t_list  *tmp;
     t_list  *tmp2;
 
+    inferieur = 0;
     len = lst_len(lst1);
     tmp2 = lst1;
     new_len = ((len / 2)) + len % 2;

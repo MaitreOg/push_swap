@@ -6,7 +6,7 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:31:22 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/20 16:15:49 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/22 14:13:01 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_list
 }					t_list;
 
 t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstnew(t_list *new);
+t_list	*ft_lstnew();
 t_list	*lst_addback(t_list *lst, int data, int rank);
 t_list	*lst_add(t_list *lst, int data);
 t_list	*lst_addfront(t_list *lst, int data, int rank);
