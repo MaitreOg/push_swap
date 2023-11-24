@@ -6,19 +6,20 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:52:26 by sam               #+#    #+#             */
-/*   Updated: 2023/11/22 20:29:03 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/24 19:29:08 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-int rank_max(t_list **lst)
+
+int	rank_max(t_list **lst)
 {
-	t_list  *tmp;
-	int rank_max;
+	t_list	*tmp;
+	int		rank_max;
 
 	tmp = *lst;
 	rank_max = 0;
-	while(tmp)
+	while (tmp)
 	{
 		if (tmp->rank > rank_max)
 			rank_max = tmp->rank;
@@ -26,10 +27,11 @@ int rank_max(t_list **lst)
 	}
 	return (rank_max);
 }
-int find_rank(t_list *lst, int data)
+
+int	find_rank(t_list *lst, int data)
 {
-	int rank;
-	t_list *tmp;
+	int		rank;
+	t_list	*tmp;
 
 	rank = 0;
 	tmp = lst;
@@ -42,9 +44,9 @@ int find_rank(t_list *lst, int data)
 	return (rank);
 }
 
-void add_rank(t_list *lst)
+void	add_rank(t_list *lst)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	tmp = lst;
 	while (tmp)
@@ -54,16 +56,16 @@ void add_rank(t_list *lst)
 	}
 }
 
-void    sort_lst(t_list **lst1, t_list **lst2)
+void	sort_lst(t_list **lst1, t_list **lst2)
 {
 	while (lst_len(*lst1) > 3)
 		algo_sort1(lst1, lst2);
 	tri_tree(lst1);
 	sort_b(lst1, lst2);
-	return;
-
+	return ;
 }
-int valeur_abs(int i, int y)
+
+int	valeur_abs(int i, int y)
 {
 	if (i < 0)
 		i *= -1;
@@ -72,12 +74,13 @@ int valeur_abs(int i, int y)
 	i += y;
 	return (i);
 }
-int find_min(t_list **lst)
+
+int	find_min(t_list **lst)
 {
-	t_list  *tmp;
-	int     min;
-	int     min2;
-	int     rank;
+	t_list	*tmp;
+	int		min;
+	int		min2;
+	int		rank;
 
 	tmp = *lst;
 	min = INT_MAX;
@@ -95,23 +98,24 @@ int find_min(t_list **lst)
 		{
 			if (tmp->cost1 >= tmp->cost2 && tmp->cost1 < min)
 				min = tmp->cost1;
-			if (tmp->cost1 < tmp->cost2 && tmp->cost2  < min)
+			if (tmp->cost1 < tmp->cost2 && tmp->cost2 < min)
 				min = tmp->cost2;
 		}
 		else if (valeur_abs(tmp->cost1, tmp->cost2) < min)
 			min = valeur_abs(tmp->cost1, tmp->cost2);
 		if (min != min2)
-		{    
+		{
 			rank = tmp->rank;
 		}
 		tmp = tmp->next;
 	}
 	return (rank);
 }
-void    add_cost_b(t_list **lst)
+
+void	add_cost_b(t_list **lst)
 {
-	int i;
-	t_list  *tmp;
+	int		i;
+	t_list	*tmp;
 
 	i = 0;
 	tmp = *lst;
@@ -122,20 +126,21 @@ void    add_cost_b(t_list **lst)
 		tmp = tmp->next;
 	}
 	if (lst_len(*lst) % 2 == 0)
-			i++;
+		i++;
 	while (tmp)
 	{
 		tmp->cost2 = -i + 1;
 		i--;
 		tmp = tmp->next;
 	}
-	return;
+	return ;
 }
-int    pos_max(t_list **lst)
+
+int	pos_max(t_list **lst)
 {
-	int i;
-	int rank;
-	t_list  *tmp;
+	int		i;
+	int		rank;
+	t_list	*tmp;
 
 	i = 0;
 	rank = rank_max(lst);
@@ -149,12 +154,13 @@ int    pos_max(t_list **lst)
 		return (i);
 	return (-(lst_len(*lst) - i));
 }
-int add_cost_a(int rank, t_list **lst1)
+
+int	add_cost_a(int rank, t_list **lst1)
 {
-	int i;
-	int pos;
-	long target;
-	t_list  *tmp;
+	int		i;
+	int		pos;
+	long	target;
+	t_list	*tmp;
 
 	target = LONG_MAX;
 	tmp = *lst1;
@@ -168,7 +174,6 @@ int add_cost_a(int rank, t_list **lst1)
 		}
 		i++;
 		tmp = tmp->next;
-	
 	}
 	if (target != LONG_MAX && pos < lst_len(*lst1) / 2)
 		return (pos);
@@ -176,9 +181,10 @@ int add_cost_a(int rank, t_list **lst1)
 		return (- (lst_len(*lst1) - pos));
 	return (pos_max(lst1));
 }
-void    aff_cost_a(t_list **lst1, t_list **lst2)
+
+void	aff_cost_a(t_list **lst1, t_list **lst2)
 {
-	t_list  *tmp2;
+	t_list	*tmp2;
 
 	tmp2 = *lst2;
 	while (tmp2)
@@ -188,20 +194,20 @@ void    aff_cost_a(t_list **lst1, t_list **lst2)
 	}
 }
 
-void move_node(t_list **lst1, t_list **lst2, int rank)
+void	move_node(t_list **lst1, t_list **lst2, int rank)
 {
-	t_list *tmp;
-	int    cost1;
-	int    cost2;
+	t_list	*tmp;
+	int		cost1;
+	int		cost2;
 
 	tmp = *lst2;
-	
-	while (tmp && tmp->rank != rank )
+	while (tmp && tmp->rank != rank)
 		tmp = tmp->next;
 	cost1 = tmp->cost1;
 	cost2 = tmp->cost2;
 	if (cost1 >= 0 && cost2 >= 0)
 	{
+		//move_pos(lst1, lst2, cost1, cost2);
 		while (cost1 > 0 && cost2 > 0)
 		{
 			rr(lst1, lst2);
@@ -221,6 +227,7 @@ void move_node(t_list **lst1, t_list **lst2, int rank)
 	}
 	else if (cost1 < 0 && cost2 < 0)
 	{
+		//move_neg(lst1, lst2, cost1, cost2);
 		while (cost1 <= -1 && cost2 <= -1)
 		{
 			rrr(lst1, lst2);
@@ -240,6 +247,7 @@ void move_node(t_list **lst1, t_list **lst2, int rank)
 	}
 	else
 	{
+		//move_two(lst1, lst2, cost1, cost2);
 		while (cost1 > 0)
 		{
 			ra(lst1);
@@ -262,13 +270,14 @@ void move_node(t_list **lst1, t_list **lst2, int rank)
 		}
 	}
 	pa(lst1, lst2);
-	return;   
+	return ;
 }
-int    test_count(t_list **lst)
+
+int	test_count(t_list **lst)
 {
-	int i;
-	int rank;
-	t_list  *tmp;
+	int		i;
+	int		rank;
+	t_list	*tmp;
 
 	i = 0;
 	rank = rank_max(lst);
@@ -282,10 +291,11 @@ int    test_count(t_list **lst)
 		return (1);
 	return (0);
 }
-void    replace_lst(t_list **lst1)
+
+void	replace_lst(t_list **lst1)
 {
-	t_list  *tmp;
-	int     i;
+	t_list	*tmp;
+	int		i;
 
 	i = test_count(lst1);
 	tmp = *lst1;
@@ -299,33 +309,32 @@ void    replace_lst(t_list **lst1)
 		while (ft_lstlast(tmp)->rank != rank_max(lst1))
 			ra(lst1);
 	}
-	return;
+	return ;
 }
-void    sort_b(t_list **lst1, t_list **lst2)
+
+void	sort_b(t_list **lst1, t_list **lst2)
 {
-	int rank;
-	
+	int	rank;
+
 	while (*lst2)
-	{  
+	{
 		add_cost_b(lst2);
 		aff_cost_a(lst1, lst2);
 		rank = find_min(lst2);
-
 		move_node(lst1, lst2, rank);
-		
 	}
 	replace_lst(lst1);
-	return;
+	return ;
 }
 
-void    tri_tree(t_list **lst1)
+void	tri_tree(t_list **lst1)
 {
-	t_list  *tmp;
-	int rank_max;
+	t_list	*tmp;
+	int		rank_max;
 
 	tmp = *lst1;
 	rank_max = 0;
-	while(tmp)
+	while (tmp)
 	{
 		if (tmp->rank > rank_max)
 			rank_max = tmp->rank;
@@ -354,18 +363,18 @@ void    tri_tree(t_list **lst1)
 			sa(lst1);
 			ra(lst1);
 		}
-		return;
+		return ;
 	}
-
 }
-void little_sort(t_list **lst1, t_list **lst2)
+
+void	little_sort(t_list **lst1, t_list **lst2)
 {
-	t_list  *tmp;
-	int rank_max;
+	t_list	*tmp;
+	int		rank_max;
 
 	tmp = *lst1;
 	rank_max = 0;
-	while(tmp)
+	while (tmp)
 	{
 		if (tmp->rank > rank_max)
 			rank_max = tmp->rank;
@@ -378,22 +387,21 @@ void little_sort(t_list **lst1, t_list **lst2)
 		else
 			ra(lst1);
 	}
-	return;
+	return ;
 }
 
-int rank_necessary(t_list *lst1)
+int	rank_necessary(t_list *lst1)
 {
-	int inferieur;
-	int len;
-	int new_len;
-	t_list  *tmp;
-	t_list  *tmp2;
+	int		inferieur;
+	int		len;
+	int		new_len;
+	t_list	*tmp;
+	t_list	*tmp2;
 
 	inferieur = 0;
 	len = lst_len(lst1);
 	tmp2 = lst1;
 	new_len = ((len / 2)) + len % 2;
-	
 	while (inferieur != new_len)
 	{
 		tmp = lst1;
@@ -406,24 +414,24 @@ int rank_necessary(t_list *lst1)
 		}
 		if (inferieur == new_len)
 			return (tmp2->rank);
-		tmp2 = tmp2->next;  
+		tmp2 = tmp2->next;
 	}
 	return (tmp2->rank);
 }
 
-void algo_sort1(t_list **lst1, t_list **lst2)
+void	algo_sort1(t_list **lst1, t_list **lst2)
 {
-	int len1;
-	int new_len;
-	int rank_n;
-	
+	int	len1;
+	int	new_len;
+	int	rank_n;
+
 	rank_n = rank_necessary(*lst1);
 	len1 = lst_len(*lst1);
-	new_len = len1; 
+	new_len = len1;
 	if ((len1 / 2) < 3)
 	{
 		little_sort(lst1, lst2);
-		return;
+		return ;
 	}
 	while (new_len > (len1 / 2) * 1 && (len1 / 2) * 1 >= 3)
 	{
@@ -437,7 +445,7 @@ void algo_sort1(t_list **lst1, t_list **lst2)
 		else
 			ra(lst1);
 		if (new_len == 3)
-			return;
+			return ;
 	}
-	return;
+	return ;
 }

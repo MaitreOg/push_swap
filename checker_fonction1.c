@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_function1.c                              :+:      :+:    :+:   */
+/*   checker_fonction1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 14:31:09 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/23 14:55:24 by smarty           ###   ########.fr       */
+/*   Created: 2023/11/24 18:00:38 by smarty            #+#    #+#             */
+/*   Updated: 2023/11/24 19:11:43 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 t_list	*rotate(t_list *lst)
 {
 	t_list	*tmp;
 
+	if (!lst)
+		return (lst);
 	if (lst->next)
 	{
-		lst = lst_addback(lst, lst->data, lst->rank);
+		lst = lst_addback(lst, lst->data);
 		tmp = lst->next;
 		free(lst);
 		lst = tmp;
@@ -26,24 +28,30 @@ t_list	*rotate(t_list *lst)
 	return (lst);
 }
 
-void	ra(t_list **lst)
+int	ra(t_list **lst)
 {
+	if (!(*lst))
+		return (-1);
 	*lst = rotate(*lst);
 	printf("ra\n");
-	return ;
+	return (0);
 }
 
-void	rb(t_list **lst)
+int	rb(t_list **lst)
 {
+	if (!(*lst))
+		return (-1);
 	*lst = rotate(*lst);
 	printf("rb\n");
-	return ;
+	return (0);
 }
 
-void	rr(t_list **lst1, t_list **lst2)
+int	rr(t_list **lst1, t_list **lst2)
 {
+	if (!(*lst1) || !(*lst2))
+		return (-1);
 	*lst1 = rotate(*lst1);
 	*lst2 = rotate(*lst2);
 	printf("rr\n");
-	return ;
+	return (0);
 }

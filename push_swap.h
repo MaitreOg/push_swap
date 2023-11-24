@@ -6,7 +6,7 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:31:22 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/22 20:27:40 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/24 18:10:46 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_list
 }					t_list;
 
 t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstnew();
+t_list	*ft_lstnew(void);
 void	ft_lstclear(t_list **lst);
 t_list	*lst_addback(t_list *lst, int data, int rank);
 t_list	*lst_add(t_list *lst, int data);
@@ -47,15 +47,16 @@ void	sa(t_list **lst);
 void	sb(t_list **lst);
 void	ss(t_list **lst1, t_list **lst2);
 int		lst_len(t_list *lst);
-void	print_lst(t_list **lst1, t_list **lst2);
-void	print_rank(t_list *lst);
-int  	find_rank(t_list *lst, int data);
-void    add_rank(t_list *lst);
-void    sort_lst(t_list **lst1, t_list **lst2);
+int		find_rank(t_list *lst, int data);
+void	add_rank(t_list *lst);
+void	sort_lst(t_list **lst1, t_list **lst2);
 void	algo_sort1(t_list **lst1, t_list **lst2);
 void	little_sort(t_list **lst1, t_list **lst2);
 void	tri_tree(t_list **lst1);
-void    sort_b(t_list **lst1, t_list **lst2);
+void	sort_b(t_list **lst1, t_list **lst2);
 int		error(char **str);
 int		error_double(int *tab, int len);
+char	**split(char *str);
+void	free_split(char **str);
+int		len_tab(char **str);
 #endif /*push_swap*/
