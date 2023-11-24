@@ -6,7 +6,7 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 18:10:13 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/24 18:36:39 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/24 21:33:30 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 	}
 	return (0);
 }
+
 void	ft_lstclear(t_list **lst)
 {
 	t_list	*temp;
@@ -76,28 +77,4 @@ void	ft_lstclear(t_list **lst)
 		*lst = temp;
 	}
 	*lst = NULL;
-}
-
-t_list	*lst_add(t_list *lst, int data)
-{
-	t_list	*node;
-	t_list	*tmp;
-
-	node = malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->data = data;
-	node->next = NULL;
-	if (!lst)
-		return (node);
-	tmp = lst;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = node;
-	return (lst);
-}
-
-t_list	*ft_lstnew(void)
-{
-	return (NULL);
 }

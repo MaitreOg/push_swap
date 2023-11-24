@@ -6,7 +6,7 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:59:59 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/24 19:15:53 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/24 21:48:31 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ int	move(char *str, t_list **lst1, t_list **lst2)
 		return (rrb(lst2));
 	else if (ft_strncmp("rrr\n", str, 4) == 0)
 		return (rrr(lst1, lst2));
-	//else
-	//	write (1, "error\n", 6);
 	return (-1);
 }
 
@@ -73,7 +71,8 @@ void	checker(t_list **lst1, t_list **lst2)
 	str = get_next_line(0);
 	while (str)
 	{
-		if(move(str, lst1, lst2) == - 1)
+		i = move(str, lst1, lst2);
+		if (i == -1)
 		{
 			write (1, "error\n", 6);
 			get_next_line(-1);

@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils3.c                                 :+:      :+:    :+:   */
+/*   checker_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 14:59:13 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/24 21:18:18 by smarty           ###   ########.fr       */
+/*   Created: 2023/11/24 21:28:30 by smarty            #+#    #+#             */
+/*   Updated: 2023/11/24 22:08:04 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int	find_rank(t_list *lst, int data)
-{
-	int		rank;
-	t_list	*tmp;
-
-	rank = 0;
-	tmp = lst;
-	while (tmp)
-	{
-		if (tmp->data < data)
-			rank++;
-		tmp = tmp->next;
-	}
-	return (rank);
-}
+#include "checker.h"
 
 static int	count_word(const char *s)
 {
@@ -74,25 +58,26 @@ char	**split(char *str)
 	return (split);
 }
 
-void	free_split(char **str)
+t_list	*lst_add(t_list *lst, int data)
 {
-	int	i;
+	t_list	*node;
+	t_list	*tmp;
 
-	i = 0;
-	while (str[i])
-	{
-		free (str[i]);
-		i++;
-	}
-	free (str);
+	node = malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->data = data;
+	node->next = NULL;
+	if (!lst)
+		return (node);
+	tmp = lst;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = node;
+	return (lst);
 }
 
-int	len_tab(char **str)
+t_list	*ft_lstnew(void)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	return (NULL);
 }

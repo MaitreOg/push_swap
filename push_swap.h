@@ -6,7 +6,7 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:31:22 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/24 18:10:46 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/24 21:29:31 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ int		lst_len(t_list *lst);
 int		find_rank(t_list *lst, int data);
 void	add_rank(t_list *lst);
 void	sort_lst(t_list **lst1, t_list **lst2);
+int		find_min(t_list **lst);
+void	move_node(t_list **lst1, t_list **lst2, int rank);
+void	aff_cost_a(t_list **lst1, t_list **lst2);
+void	add_cost_b(t_list **lst);
+int		pos_max(t_list **lst);
 void	algo_sort1(t_list **lst1, t_list **lst2);
 void	little_sort(t_list **lst1, t_list **lst2);
 void	tri_tree(t_list **lst1);
@@ -59,4 +64,5 @@ int		error_double(int *tab, int len);
 char	**split(char *str);
 void	free_split(char **str);
 int		len_tab(char **str);
+int		rank_max(t_list **lst);
 #endif /*push_swap*/

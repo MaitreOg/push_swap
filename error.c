@@ -6,12 +6,11 @@
 /*   By: smarty <smarty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:23:18 by smarty            #+#    #+#             */
-/*   Updated: 2023/11/24 18:17:42 by smarty           ###   ########.fr       */
+/*   Updated: 2023/11/24 21:25:08 by smarty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	error_letter(char **str)
 {
